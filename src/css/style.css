@@ -1,0 +1,340 @@
+html {
+	font-family: sans-serif;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	-ms-touch-action: pan-y;
+	touch-action: pan-y;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+body, #content{
+	height: 100%;
+	overflow:hidden;
+	font-family:'HelveticaNeue', 'Helvetica Neue',Helvetica, "Microsoft YaHei", Arial, sans-serif;
+	color:#000;
+	font-size:14px;
+	display:-webkit-box;
+	background: #000;
+	margin: 0;
+	-webkit-box-orient: vertical;
+	-webkit-box-align:stretch;
+	-webkit-touch-callout: none;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: transparent;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	word-wrap: break-word;
+	line-height: 20px;
+	text-rendering: optimizeLegibility;
+	-webkit-backface-visibility: hidden;
+	-webkit-user-drag: none;
+	-ms-content-zooming: none;
+}
+a, button, :focus, a:focus, button:focus, a:active, a:hover {
+  outline: 0;
+}
+a {
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+}
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration, button {
+  -webkit-appearance: none;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+ul{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+		border-radius: 5px;
+}
+::-webkit-scrollbar:hover{
+		background-color: rgb(204,204,204);
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(87, 92, 96, 0.4);
+		border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(87, 92, 96, 0.6);
+}
+::-webkit-scrollbar-track-piece {
+    border-radius: 0;
+}
+::selection {
+    text-shadow: none;
+    background: rgba(87, 172, 104, .3);
+}
+
+#wrap{
+	width: 375px;
+	height: 627px;
+	position: absolute;
+	left: 50%;
+	top: 20px;
+	color: #333;
+	margin-left: -187px;
+	background-color: #fff;
+	overflow: hidden;
+}
+#header{
+	height: 50px;
+	background-color: #333;
+}
+#header h1{
+	font-size: 16px;
+	color: rgba(255,255,255,.8);
+	line-height: 50px;
+	font-weight: normal;
+	text-align: center;
+	margin: 0
+}
+#sendmsg{
+	height: 200px;
+	background-color: #fff;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 3;
+}
+#main{
+	position: absolute;
+	top: 50px;
+	bottom: 200px;
+	left: 0;
+	right: 0;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	padding-bottom: 15px;
+	background-color: #eee
+}
+.sendbar{
+	height: 40px;
+	border-bottom: 1px solid #ddd;
+}
+.input_box{
+	position: absolute;
+	top: 41px;
+	bottom: 44px;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 5px 10px;
+	border: 0 none;
+	font-size: 14px;
+	line-height: 1.2em;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+.input_box img{
+	vertical-align: middle;
+}
+.sendbtmbar{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 44px;
+	background-color: #f5f5f5
+}
+.sendbtn{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	padding: 0 15px;
+	background:none;
+	background-color: #ddd;
+	border: 1px solid #aaa;
+	color: #333;
+	cursor: pointer;
+	line-height: 23px;
+}
+.list{
+	overflow: hidden;
+	margin: 15px 10px 0 10px;
+}
+.msg{
+	float: left;
+	border-radius: 6px;
+	border: 1px solid #eee;
+	max-width: 270px;
+	line-height: 24px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	background-color: #fff;
+	margin-left: 15px;
+	font-size: 14px;
+	padding: 7px 9px;
+	position: relative;
+}
+.msg img{
+	max-width: 100%;
+	vertical-align: middle;
+}
+.me .msg{
+	float:right;
+	margin-right: 15px;
+	margin-left: 0;
+	background-color: #a7e795;
+
+}
+.me .head{
+	float:right;
+	background-image: url(../image/face.jpg);
+}
+.me .msg:before{
+	background-color: #a7e795;
+	right: -4px;
+	left: auto;
+}
+.msg:before{
+	content: "";
+	width: 7px;
+	height: 7px;
+	background-color: #fff;
+	position: absolute;
+	left: -4px;
+	top: 7px;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.head{
+	float: left;
+	width: 35px;
+	height: 35px;
+	background-image: url(../image/icon.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.triggerface{
+	display: none;
+	position: absolute;
+	bottom: 210px;
+	right: 10px;
+	border-radius: 5px;
+	border: 1px solid #bbb;
+	padding: 10px;
+	background-color: #eee;
+	box-shadow: 0 0 5px rgba(0,0,0,.2);
+	z-index: 1
+}
+.triggerface:after{
+	width: 0;
+	height: 0;
+	border-width: 6px;
+
+}
+.tfacewrap{
+	height: 60px;
+	width: 100%;
+}
+.triggerface span{
+	width: 60px;
+	height: 60px;
+	background-color: #ddd;
+	display: inline-block;
+	margin-right: 10px;
+}
+.triggerface span:last-child{
+	margin: 0;
+}
+.facebox{
+	position: absolute;
+	bottom:200px;
+	width: 100%;
+	height: 170px;
+	border-bottom: 1px solid #eee;
+	box-shadow: 0 -2px 7px rgba(0,0,0,.1);
+	background-color: #fff;
+	-webkit-transform: translateY(100%);
+	transform: translateY(100%);
+	-webkit-transition: -webkit-transform 300ms ease;
+	transition: transform 300ms ease;
+	z-index: 2;
+}
+.facebox.slide{
+	-webkit-transform: translateY(0);
+	transform: translateY(0);
+}
+.facecontent{
+	padding: 15px 10px 0 15px;
+}
+.facecontent ul{
+	width: 350px;
+	height: 140px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.emoiface{
+	display: none;
+}
+.emoiface li{
+		width: 80px;
+		height: 80px;
+		background-color: #eee;
+		margin: 2px;
+		float: left;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+}
+.defface li{
+	float: left;
+	border:1px solid #eee;
+	width: 32px;
+	height: 32px;
+	margin-left: -1px;
+	margin-top: -1px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.defface li:hover{
+	background-color: #DEF3FF
+}
+.face{
+	display: inline-block;
+	width: 39px;
+	height: 39px;
+	font-size: 23px;
+	text-align: center;
+	line-height: 40px;
+	margin-left: 5px;
+	cursor: pointer;
+	vertical-align: middle;
+}
+.face:hover, .face.active{
+	background-color: #eee
+}
+.facebtm{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 35px;
+	z-index: 1;
+	background-color: #f5f5f5
+}
+.icon-emoi{
+	background: url(../image/icon.png) no-repeat center;
+	background-size: 20px 20px;
+}
