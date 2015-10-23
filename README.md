@@ -1,2 +1,2 @@
 # Emoi wechat demo
-webpack
+webpack React
