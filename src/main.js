@@ -7,13 +7,8 @@ import React from 'react';
 
 
 if(typeof document != 'undefined'){
+	React.initializeTouchEvents(true);
 	React.render(<App />, document.querySelector('#content'));
-	window.medium = new Medium({
-					element: document.querySelector('.input_box'),
-					mode: Medium.richMode,
-					attributes: null,
-					tags: null
-			});
 }
 
 export default App

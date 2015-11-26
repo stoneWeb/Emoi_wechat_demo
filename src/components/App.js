@@ -1,9 +1,8 @@
 'use strict';
 import React, { Component } from 'react';
-import Head from './Head';
 import Main from './Main';
 import ChatSender from './ChatSender';
-
+import FaceList from './FaceList';
 
 export default class App extends Component {
 	constructor(){
@@ -18,11 +17,12 @@ export default class App extends Component {
 	}
 	senderChange(value){
 		this.state.input = {
-			html: medium.value(),
+			html: value.html,
 			text: value.text
 		}
 	}
 	senderEnter(ev){
+
 		if(!this.state.input.html)return false;
 		let val = this.state.list;
 		val.push({
@@ -41,12 +41,12 @@ export default class App extends Component {
 	}
 	render(){
 		return (
-			<div id="wrap">
-				<Head title="Emoi" />
-				<Main list={this.state.list} />
-				<ChatSender 
-					senderChange={this.senderChange.bind(this)} 
-					onEnter={this.senderEnter.bind(this)} />
+			<div>
+				<div id="wrap">
+					<Main list={this.state.list} />
+				</div>
+				<ChatSender senderChange={this.senderChange.bind(this)} onEnter={this.senderEnter.bind(this)} />
+				<FaceList></FaceList>
 			</div>
 		)
 	}

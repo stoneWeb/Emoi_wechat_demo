@@ -9,8 +9,16 @@ html {
 	width: 100%;
 	overflow: hidden;
 }
-body, #content{
-	height: 100%;
+body{
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	margin: 0;
+}
+#content{
 	overflow:hidden;
 	font-family:'HelveticaNeue', 'Helvetica Neue',Helvetica, "Microsoft YaHei", Arial, sans-serif;
 	color:#000;
@@ -37,6 +45,9 @@ body, #content{
 	-webkit-backface-visibility: hidden;
 	-webkit-user-drag: none;
 	-ms-content-zooming: none;
+}
+#content{
+	position: absolute;
 }
 a, button, :focus, a:focus, button:focus, a:active, a:hover {
   outline: 0;
@@ -87,13 +98,12 @@ li{
 }
 
 #wrap{
-	width: 375px;
-	height: 627px;
+	top:0;
+	left: 0;
+	bottom: 0;
+	right: 0;
 	position: absolute;
-	left: 50%;
-	top: 20px;
 	color: #333;
-	margin-left: -187px;
 	background-color: #fff;
 	overflow: hidden;
 }
@@ -110,64 +120,57 @@ li{
 	margin: 0
 }
 #sendmsg{
-	height: 200px;
-	background-color: #fff;
-	position: absolute;
+	height: 44px;
+	background-color: #eee;
+	box-sizing: border-box;
+	position: fixed;
 	bottom: 0;
 	left: 0;
 	width: 100%;
 	z-index: 3;
 }
+#sendmsg.open{
+	-webkit-transform: translateY(-216px);
+	transform: translateY(-216px);
+}
 #main{
 	position: absolute;
-	top: 50px;
-	bottom: 200px;
+	top: 0;
+	bottom: 44px;
 	left: 0;
 	right: 0;
 	overflow-x: hidden;
 	overflow-y: scroll;
 	padding-bottom: 15px;
-	background-color: #eee
-}
-.sendbar{
-	height: 40px;
-	border-bottom: 1px solid #ddd;
+	background-color: #ddd
 }
 .input_box{
 	position: absolute;
-	top: 41px;
-	bottom: 44px;
-	width: 100%;
+	left: 10px;
+	top: 7px;
+	right: 50px;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	padding: 5px 10px;
-	border: 0 none;
+	padding: 5px;
+	height: 30px;
+	border: 1px solid #e1e1e1;
+	border-radius: 5px;
 	font-size: 14px;
 	line-height: 1.2em;
 	overflow-x: hidden;
 	overflow-y: scroll;
+	background-color: #fff;
 }
 .input_box img{
 	vertical-align: middle;
 }
-.sendbtmbar{
+.facebtn{
 	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 44px;
-	background-color: #f5f5f5
-}
-.sendbtn{
-	position: absolute;
+	width: 29px;
+	height: 29px;
+	background-color: #ccc;
 	right: 10px;
-	top: 10px;
-	padding: 0 15px;
-	background:none;
-	background-color: #ddd;
-	border: 1px solid #aaa;
-	color: #333;
-	cursor: pointer;
-	line-height: 23px;
+	top: 8px;
 }
 .list{
 	overflow: hidden;
@@ -176,7 +179,7 @@ li{
 .msg{
 	float: left;
 	border-radius: 6px;
-	border: 1px solid #eee;
+	border: 1px solid #ddd;
 	max-width: 270px;
 	line-height: 24px;
 	-webkit-box-sizing: border-box;
@@ -260,11 +263,10 @@ li{
 }
 .facebox{
 	position: absolute;
-	bottom:200px;
-	width: 100%;
-	height: 170px;
-	border-bottom: 1px solid #eee;
-	box-shadow: 0 -2px 7px rgba(0,0,0,.1);
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 216px;
 	background-color: #fff;
 	-webkit-transform: translateY(100%);
 	transform: translateY(100%);
@@ -272,45 +274,9 @@ li{
 	transition: transform 300ms ease;
 	z-index: 2;
 }
-.facebox.slide{
+.facebox.open{
 	-webkit-transform: translateY(0);
 	transform: translateY(0);
-}
-.facecontent{
-	padding: 15px 10px 0 15px;
-}
-.facecontent ul{
-	width: 350px;
-	height: 140px;
-	overflow-y: scroll;
-	overflow-x: hidden;
-}
-
-.emoiface{
-	display: none;
-}
-.emoiface li{
-		width: 80px;
-		height: 80px;
-		background-color: #eee;
-		margin: 2px;
-		float: left;
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: contain;
-}
-.defface li{
-	float: left;
-	border:1px solid #eee;
-	width: 32px;
-	height: 32px;
-	margin-left: -1px;
-	margin-top: -1px;
-	background-position: center;
-	background-repeat: no-repeat;
-}
-.defface li:hover{
-	background-color: #DEF3FF
 }
 .face{
 	display: inline-block;
