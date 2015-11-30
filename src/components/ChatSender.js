@@ -27,7 +27,8 @@ class ChatSender extends Component {
 		this.setState({
 			openCls: 'open'
 		});
-		EventEmitter.trigger('openFaceBox', {openCls: 'open'})
+		EventEmitter.trigger('openFaceBox', {openCls: 'open'});
+		EventEmitter.trigger('onopen', {})
 	}
 	render(){
 		return (
