@@ -10,13 +10,20 @@ class ChatSender extends Component {
 			openCls: ''
 		};
 	}
+	componentDidMount(){
+		EventEmitter.on('openFaceBox', (e) => {
+			this.setState({
+				openCls: e.openCls
+			});
+		});
+	}
+	componentWillUnmount(){
+		EventEmitter.off('openFaceBox');
+	}
 	handlerClick(...args){
 		this.props.onEnter.apply(this, args)
 	}
 	inputFocus(){
-		this.setState({
-			openCls: ''
-		});
 		EventEmitter.trigger('openFaceBox', {openCls: ''})
 	}
 	inputBlur(){
@@ -24,9 +31,6 @@ class ChatSender extends Component {
 	}
 	handlerFaceBtnTouch(){
 		EventEmitter.trigger('textBoxBlur', {});
-		this.setState({
-			openCls: 'open'
-		});
 		EventEmitter.trigger('openFaceBox', {openCls: 'open'});
 		EventEmitter.trigger('onopen', {})
 	}
@@ -34,7 +38,7 @@ class ChatSender extends Component {
 		return (
 			<div id="sendmsg" className={this.state.openCls}>
 				<ContentEditable {...this.props} inputFocus={this.inputFocus.bind(this)} inputBlur={this.inputBlur.bind(this)}/>
-				<span className="facebtn" onTouchStart={this.handlerFaceBtnTouch.bind(this)}></span>
+				<span className="facebtn" onClick={this.handlerFaceBtnTouch.bind(this)}></span>
 			</div>
 		)
 	}

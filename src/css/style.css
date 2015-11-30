@@ -144,6 +144,9 @@ li{
 	padding-bottom: 15px;
 	background-color: #ddd
 }
+#main.open{
+	bottom: 260px;
+}
 .input_box{
 	position: absolute;
 	left: 10px;
@@ -191,7 +194,7 @@ li{
 	position: relative;
 }
 .msg img{
-	max-width: 100%;
+	max-width: 160px;
 	vertical-align: middle;
 }
 .me .msg{

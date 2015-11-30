@@ -6,7 +6,7 @@ class ListItem extends Component {
 		return (
 			<div className="list me">
 				<span className="head"></span>
-				<div className="msg">{this.props.text}</div>
+				<div className="msg">{this.props.html}</div>
 			</div>
 		)
 	}

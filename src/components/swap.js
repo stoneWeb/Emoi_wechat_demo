@@ -13,8 +13,9 @@ class Swap extends Component {
       this.swapParams = null;
     }
     componentDidMount(){
+      this.input = document.querySelector('.input_box');
       EventEmitter.on('onopen', (e) => {
-        var q = document.querySelector('.input_box').textContent.trim();
+        var q = this.input.textContent.trim();
         if(q && q != this.query){
           this.query = q;
           this.loaded = false;
@@ -44,6 +45,7 @@ class Swap extends Component {
   		q.m = q.m || 'default';
   		q.m = q.m == "Version4"?(q.m+'&rerank_count=1&prefetc=1'):q.m;
       let url = 'http://bumblebing-dev.chinacloudapp.cn/chat/searchText?q='+encodeURIComponent(q.q)+'&s='+q.s+'&r='+q.r+"&m="+q.m+'&cache=false';
+      alert(fetch);
       return fetch(url)
     }
     onMore(){
@@ -78,12 +80,15 @@ class Swap extends Component {
     renderItem(data){
       let html = [];
       for(let k of data){
-        html.push(<span style={{backgroundImage: "url("+ k.thumb +")"}}></span>)
+        html.push(<span className="face-item-click" src={k.thumb} style={{backgroundImage: "url("+ k.thumb +")"}}></span>)
       }
       return html
     }
     clickEvent(e){
-      console.log(e.target);
+      if(e.target.className == "face-item-click"){
+        var url = e.target.getAttribute('src');
+        EventEmitter.trigger('clickface', {src: url})
+      }
     }
     touchStart(e){
       if(this.swapParams){
