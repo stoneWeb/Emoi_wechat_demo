@@ -47,7 +47,7 @@ class Swap extends Component {
   		q.m = q.m || 'default';
   		q.m = q.m == "Version4"?(q.m+'&rerank_count=1&prefetc=1'):q.m;
       let url = 'http://bumblebing-dev.chinacloudapp.cn/chat/searchText?q='+encodeURIComponent(q.q)+'&s='+q.s+'&r='+q.r+"&m="+q.m+'&cache=false';
-      if('undefined' == window.fetch){
+      if('undefined' != typeof window.fetch){
         return fetch(url)
       }
       return new Promise((resolve, reject) => {

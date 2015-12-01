@@ -357,6 +357,7 @@ li{
 	width: -webkit-calc(25% - 10px);
 	width: calc(25% - 10px);
 	background-size: cover;
+	background-color: #e5e5e5;
 	background-repeat: no-repeat;
 }
 .swap-tips, .face-loading{
