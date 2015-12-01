@@ -139,6 +139,7 @@ li{
 	bottom: 44px;
 	left: 0;
 	right: 0;
+	-webkit-overflow-scrolling: touch;
 	overflow-x: hidden;
 	overflow-y: scroll;
 	padding-bottom: 15px;
@@ -171,9 +172,14 @@ li{
 	position: absolute;
 	width: 29px;
 	height: 29px;
-	background-color: #ccc;
 	right: 10px;
 	top: 8px;
+
+    text-align: center;
+    line-height: 28px;
+    vertical-align: middle;
+    font-size: 30px;
+    color: #aaa;
 }
 .list{
 	overflow: hidden;

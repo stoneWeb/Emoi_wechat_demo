@@ -25,9 +25,11 @@ class Swap extends Component {
           })
           .then(res => res.json())
           .then((data) => {
-            this.setState({
-              data: data.docs
-            });
+            if(data && data.docs){
+              this.setState({
+                data: data.docs
+              });
+            }
             this.loaded = true;
           })
           .catch((e) => {
@@ -45,8 +47,34 @@ class Swap extends Component {
   		q.m = q.m || 'default';
   		q.m = q.m == "Version4"?(q.m+'&rerank_count=1&prefetc=1'):q.m;
       let url = 'http://bumblebing-dev.chinacloudapp.cn/chat/searchText?q='+encodeURIComponent(q.q)+'&s='+q.s+'&r='+q.r+"&m="+q.m+'&cache=false';
-      alert(fetch);
-      return fetch(url)
+      if('undefined' == window.fetch){
+        return fetch(url)
+      }
+      return new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest();
+        let handler = () => {
+          if(xhr.readyState == 4){
+            if(xhr.status == 200){
+              let data = {
+                data: xhr.responseText,
+                json(){
+                  try{
+                    return JSON.parse(this.data)
+                  }catch(ex){
+                    return null
+                  }
+                }
+              }
+              resolve(data)
+            }else{
+              reject(new Error(this.statusText))
+            }
+          }
+        }
+        xhr.open('GET', url, true);
+        xhr.onreadystatechange = handler;
+        xhr.send();
+      });
     }
     onMore(){
       var _this = this;
@@ -69,7 +97,7 @@ class Swap extends Component {
     }
     nodata(){
       return (
-        <span className="swap-tips">无匹配结果</span>
+        <span className="swap-tips">...</span>
       )
     }
     loading(){
@@ -102,7 +130,7 @@ class Swap extends Component {
         time: Date.now(),
         dom: dom,
         l: parseInt(dom.style["transform"].match(/\(([^,]+),/)[1] || 0),
-        d: 0,
+        d: this.l,
         isSwap: 0,
         w: this.getWidth()
       }
@@ -132,13 +160,14 @@ class Swap extends Component {
             x;
 
         if(diff > 20 && diffTime){
-          x = this.swapParams.l + (this.swapParams.d - this.swapParams.l>1?this.w:-this.w)
+          x = this.swapParams.l + (this.swapParams.d - this.swapParams.l>1?this.w:-this.w);
         }else{
           x = Math.round(this.swapParams.d/this.w) * this.w;
         }
 
         x = Math.min(0, x);
         x = Math.max(max, x);
+
         if(this.state.data.length % 8 == 0 && this.loaded){
           this.onMore();
         }

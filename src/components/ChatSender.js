@@ -38,7 +38,7 @@ class ChatSender extends Component {
 		return (
 			<div id="sendmsg" className={this.state.openCls}>
 				<ContentEditable {...this.props} inputFocus={this.inputFocus.bind(this)} inputBlur={this.inputBlur.bind(this)}/>
-				<span className="facebtn" onClick={this.handlerFaceBtnTouch.bind(this)}></span>
+				<span className="facebtn ion-android-happy" onClick={this.handlerFaceBtnTouch.bind(this)}></span>
 			</div>
 		)
 	}

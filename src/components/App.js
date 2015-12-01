@@ -13,10 +13,16 @@ export default class App extends Component {
 				html: '',
 				text: ''
 			},
-			list: [{html: 'hello world!'}]
+			list: []
 		};
 	}
+	scrollBottom(){
+		setTimeout(() => {
+			this.mainDom.scrollTop = this.mainDom.scrollHeight
+		}, 0)
+	}
 	componentDidMount(){
+		this.mainDom = document.querySelector('#main');
 		EventEmitter.on('clickface', (data) => {
 			let val = this.state.list;
 			val.push({
@@ -30,6 +36,7 @@ export default class App extends Component {
 				list: val
 			});
 			document.querySelector('.input_box').innerHTML = '';
+			this.scrollBottom()
 		});
 	}
 	componentWillUnmount(){
@@ -57,6 +64,7 @@ export default class App extends Component {
 		});
 		document.querySelector('.input_box').innerHTML = '';
 		document.querySelector('.input_box').focus();
+		this.scrollBottom()
 		return false
 	}
 	render(){
