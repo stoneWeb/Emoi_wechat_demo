@@ -15,7 +15,7 @@ class Swap extends Component {
     componentDidMount(){
       this.input = document.querySelector('.input_box');
       EventEmitter.on('onopen', (e) => {
-        var q = this.input.textContent.trim();
+        var q = e.query || this.input.textContent.trim();
         if(q && q != this.query){
           this.query = q;
           this.loaded = false;
@@ -34,7 +34,8 @@ class Swap extends Component {
           })
           .catch((e) => {
             this.loaded = true;
-          })
+          });
+          this.refs.swap.getDOMNode().style['transform'] = "translate3d(0, 0, 0)";
         }
   		});
     }
@@ -82,7 +83,7 @@ class Swap extends Component {
       this.request({
         q: _this.query,
         s: _this.state.data.length,
-        r: this.s + 16
+        r: 16
       })
       .then(res => res.json())
       .then((data) => {
@@ -108,13 +109,13 @@ class Swap extends Component {
     renderItem(data){
       let html = [];
       for(let k of data){
-        html.push(<span className="face-item-click" src={k.thumb} style={{backgroundImage: "url("+ k.thumb +")"}}></span>)
+        html.push(<span className="face-item-click" data-src={k.thumb} style={{backgroundImage: "url("+ k.thumb +")"}}></span>)
       }
       return html
     }
     clickEvent(e){
       if(e.target.className == "face-item-click"){
-        var url = e.target.getAttribute('src');
+        var url = e.target.getAttribute('data-src');
         EventEmitter.trigger('clickface', {src: url})
       }
     }

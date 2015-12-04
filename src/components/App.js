@@ -49,12 +49,13 @@ export default class App extends Component {
 		}
 	}
 	senderEnter(ev){
-
 		if(!this.state.input.html)return false;
 		let val = this.state.list;
+		let text = this.state.input.text;
 		val.push({
 			html: this.state.input.html
 		});
+		EventEmitter.trigger('onopen', {query: text});
 		this.setState({
 			input: {
 				html: '',
@@ -62,6 +63,7 @@ export default class App extends Component {
 			},
 			list: val
 		});
+
 		document.querySelector('.input_box').innerHTML = '';
 		document.querySelector('.input_box').focus();
 		this.scrollBottom()

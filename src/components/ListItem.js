@@ -2,11 +2,20 @@
 import React, { Component } from 'react';
 
 class ListItem extends Component {
-	render(){
+	renderText(text){
 		return (
 			<div className="list me">
 				<span className="head"></span>
-				<div className="msg">{this.props.html}</div>
+				<div className="msg">{text}</div>
+			</div>
+		)
+	}
+	render(){
+		let cls = typeof this.props.html == 'object'?'msg nostyle':'msg';
+		return (
+			<div className="list me">
+				<span className="head"></span>
+				<div className={cls}>{this.props.html}</div>
 			</div>
 		)
 	}

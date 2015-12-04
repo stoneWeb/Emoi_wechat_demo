@@ -203,6 +203,12 @@ li{
 	max-width: 160px;
 	vertical-align: middle;
 }
+.me .nostyle.msg{
+	background-color: transparent;
+}
+.me .nostyle.msg:before{
+	background-color: transparent;
+}
 .me .msg{
 	float:right;
 	margin-right: 15px;
